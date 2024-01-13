@@ -240,7 +240,7 @@ local theme = lush(function(injected_functions)
     WhichKeyValue                          { Comment }, -- WhichKeyValue  xxx links to Comment
     Underlined                             { gui="underline", fg="#80a0ff", }, -- Underlined     xxx cterm=underline ctermfg=81 gui=underline guifg=#80a0ff
     sym"@text.underline"                   { Underlined }, -- @text.underline xxx links to Underlined
-    MatchParen                             { bg="#5a5a5a", fg="#000000", }, -- MatchParen     xxx ctermfg=16 ctermbg=240 guifg=#000000 guibg=#5a5a5a
+    MatchParen                             { IncSearch }, -- MatchParen     xxx ctermfg=16 ctermbg=240 guifg=#000000 guibg=#5a5a5a
     Ignore                                 { fg="bg", }, -- Ignore         xxx ctermfg=0 guifg=bg
     NvimInternalError                      { ErrorMsg }, -- NvimInternalError xxx ctermfg=9 ctermbg=9 guifg=Red guibg=Red
     NvimFigureBrace                        { NvimInternalError }, -- NvimFigureBrace xxx links to NvimInternalError
