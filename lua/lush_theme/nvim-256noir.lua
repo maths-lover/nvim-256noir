@@ -7,24 +7,24 @@ local hsluv = lush.hsluv
 local theme = lush(function(injected_functions)
   local sym = injected_functions.sym
   return {
-    Normal                                 { bg=hsl("#000000"), fg=hsl("#bcbcbc"), }, -- Normal         xxx ctermfg=250 ctermbg=16 guifg=#bcbcbc guibg=#000000
-    Visual                                 { bg=hsl("#000000"), gui="reverse", fg=hsl("#bcbcbc"), }, -- Visual         xxx cterm=reverse ctermfg=250 ctermbg=16 gui=reverse guifg=#bcbcbc guibg=#000000
-    SpecialKey                             { bg=hsl("#eeeeee"), fg=hsl("#000000"), }, -- SpecialKey     xxx ctermfg=16 ctermbg=255 guifg=#000000 guibg=#eeeeee
+    Normal                                 { bg=hsl("#000000"), fg=hsl("#808080"), }, -- Normal         xxx ctermfg=250 ctermbg=16 guifg=#bcbcbc guibg=#000000
+    Visual                                 { bg=hsl("#000000"), gui="reverse", fg=hsl("#808080"), }, -- Visual         xxx cterm=reverse ctermfg=250 ctermbg=16 gui=reverse guifg=#bcbcbc guibg=#000000
+    SpecialKey                             { bg=hsl("#ffffff"), fg=hsl("#000000"), }, -- SpecialKey     xxx ctermfg=16 ctermbg=255 guifg=#000000 guibg=#eeeeee
     iCursor                                { SpecialKey }, -- iCursor        xxx links to SpecialKey
     TermCursor                             { gui="reverse", }, -- TermCursor     xxx cterm=reverse gui=reverse
-    Comment                                { bg=hsl("#000000"), fg=hsl("#585858") }, -- Comment        xxx ctermfg=240 ctermbg=16 guifg=#585858 guibg=#000000
+    Comment                                { bg=hsl("#000000"), fg=hsl("#5a5a5a"), gui="italic" }, -- Comment        xxx ctermfg=240 ctermbg=16 guifg=#5a5a5a guibg=#000000
     NonText                                { Comment, gui="bold", fg=Comment.fg.darken(10) }, -- NonText        xxx ctermfg=12 gui=bold guifg=Blue
     EndOfBuffer                            { NonText }, -- EndOfBuffer    xxx links to NonText
     Whitespace                             { NonText }, -- Whitespace     xxx links to NonText
     GitSignsCurrentLineBlame               { NonText }, -- GitSignsCurrentLineBlame xxx links to NonText
     Directory                              { fg="cyan", }, -- Directory      xxx ctermfg=159 guifg=Cyan
-    ErrorMsg                               { bg="#af0000", fg="#eeeeee", }, -- ErrorMsg       xxx ctermfg=255 ctermbg=124 guifg=#eeeeee guibg=#af0000
+    ErrorMsg                               { bg="#ff0000", fg="#ffffff", }, -- ErrorMsg       xxx ctermfg=255 ctermbg=124 guifg=#eeeeee guibg=#870000
     NvimInvalidSpacing                     { ErrorMsg }, -- NvimInvalidSpacing xxx links to ErrorMsg
     Search                                 { bg = hsl(52, 52, 52), fg = hsl(52, 10, 10) }, -- Search         xxx ctermfg=245 ctermbg=236 guifg=#8a8a8a guibg=#303030
     IncSearch                              { bg=Search.bg.ro(-20), fg=Search.fg.da(90) }, -- IncSearch      xxx cterm=reverse ctermfg=255 ctermbg=245 gui=reverse guifg=#eeeeee guibg=#8a8a8a
     CurSearch                              { bg=Search.bg.ro(-40), fg=Search.fg.da(90) }, -- CurSearch      xxx links to Search
     QuickFixLine                           { Search }, -- QuickFixLine   xxx links to Search
-    Substitute                             { Search }, -- Substitute     xxx links to Search
+    Substitute                             { Search, bg="seagreen" }, -- Substitute     xxx links to Search
     MoreMsg                                { gui="bold", fg="seagreen", }, -- MoreMsg        xxx ctermfg=121 gui=bold guifg=SeaGreen
     ModeMsg                                { gui="bold", }, -- ModeMsg        xxx cterm=bold gui=bold
     LineNr                                 { Comment, fg=Comment.fg.lighten(20) }, -- LineNr         xxx ctermfg=11 guifg=Yellow
@@ -32,9 +32,9 @@ local theme = lush(function(injected_functions)
     LineNrBelow                            { LineNr }, -- LineNrBelow    xxx links to LineNr
     CursorLineNr                           { LineNr, gui="bold" }, -- CursorLineNr   xxx cterm=underline ctermfg=11 gui=bold guifg=Yellow
     Question                               { gui="bold", fg="green", }, -- Question       xxx ctermfg=121 gui=bold guifg=Green
-    StatusLine                             { bg="#000000", gui="bold,reverse", fg="#8a8a8a", }, -- StatusLine     xxx cterm=bold,reverse ctermfg=245 ctermbg=16 gui=bold,reverse guifg=#8a8a8a guibg=#000000
+    StatusLine                             { bg="#000000", gui="bold,reverse", fg="#808080", }, -- StatusLine     xxx cterm=bold,reverse ctermfg=245 ctermbg=16 gui=bold,reverse guifg=#8a8a8a guibg=#000000
     MsgSeparator                           { StatusLine }, -- MsgSeparator   xxx links to StatusLine
-    StatusLineNC                           { bg="#000000", gui="reverse", fg="#303030", }, -- StatusLineNC   xxx cterm=reverse ctermfg=236 ctermbg=16 gui=reverse guifg=#303030 guibg=#000000
+    StatusLineNC                           { bg="#000000", gui="reverse", fg="#5a5a5a", }, -- StatusLineNC   xxx cterm=reverse ctermfg=236 ctermbg=16 gui=reverse guifg=#303030 guibg=#000000
     Title                                  { gui="bold", fg="magenta", }, -- Title          xxx ctermfg=225 gui=bold guifg=Magenta
     FloatTitle                             { Title }, -- FloatTitle     xxx links to Title
     VertSplit                              { Visual }, -- VertSplit      xxx links to Visual
@@ -42,26 +42,26 @@ local theme = lush(function(injected_functions)
     VisualNOS                              { Visual }, -- VisualNOS      xxx links to Visual
     TelescopeSelection                     { Visual }, -- TelescopeSelection xxx links to Visual
     WarningMsg                             { fg="red", }, -- WarningMsg     xxx ctermfg=224 guifg=Red
-    WildMenu                               { bg="#eeeeee", fg="#585858", }, -- WildMenu       xxx ctermfg=240 ctermbg=255 guifg=#585858 guibg=#eeeeee
-    Folded                                 { bg="darkgrey", fg="cyan", }, -- Folded         xxx ctermfg=14 ctermbg=242 guifg=Cyan guibg=DarkGrey
-    FoldColumn                             { bg="grey", fg="cyan", }, -- FoldColumn     xxx ctermfg=14 ctermbg=242 guifg=Cyan guibg=Grey
+    WildMenu                               { bg="#ffffff", fg="#5a5a5a", }, -- WildMenu       xxx ctermfg=240 ctermbg=255 guifg=#5a5a5a guibg=#eeeeee
+    Folded                                 { Normal, fg=hsl("#870000"), }, -- Folded         xxx ctermfg=14 ctermbg=242 guifg=Cyan guibg=DarkGrey
+    FoldColumn                             { Folded }, -- FoldColumn     xxx ctermfg=14 ctermbg=242 guifg=Cyan guibg=Grey
     CursorLineFold                         { FoldColumn }, -- CursorLineFold xxx links to FoldColumn
     DiffAdd                                { bg="darkblue", }, -- DiffAdd        xxx ctermbg=4 guibg=DarkBlue
     GitSignsAddPreview                     { DiffAdd }, -- GitSignsAddPreview xxx links to DiffAdd
-    DiffChange                             { bg="#eeeeee", fg="#d70000", }, -- DiffChange     xxx ctermfg=160 ctermbg=255 guifg=#d70000 guibg=#eeeeee
+    DiffChange                             { bg=hsl("#ffffff"), fg=hsl("#ff0000"), }, -- DiffChange     xxx ctermfg=160 ctermbg=255 guifg=#d70000 guibg=#eeeeee
     diffChanged                            { DiffChange }, -- diffChanged    xxx links to DiffChange
     DiffDelete                             { bg="darkcyan", gui="bold", fg="blue", }, -- DiffDelete     xxx ctermfg=12 ctermbg=6 gui=bold guifg=Blue guibg=DarkCyan
     GitSignsDeletePreview                  { DiffDelete }, -- GitSignsDeletePreview xxx links to DiffDelete
-    DiffText                               { bg="#ff0000", gui="bold", fg="#bcbcbc", }, -- DiffText       xxx cterm=bold ctermfg=250 ctermbg=196 gui=bold guifg=#bcbcbc guibg=#ff0000
-    SignColumn                             { bg="#585858", fg="#af0000", }, -- SignColumn     xxx ctermfg=124 ctermbg=240 guifg=#af0000 guibg=#585858
+    DiffText                               { bg=hsl("#ff0000"), gui="bold", fg=hsl("#bcbcbc"), }, -- DiffText       xxx cterm=bold ctermfg=250 ctermbg=196 gui=bold guifg=#bcbcbc guibg=#ff0000
+    SignColumn                             { bg="#5a5a5a", fg="#870000", }, -- SignColumn     xxx ctermfg=124 ctermbg=240 guifg=#870000 guibg=#5a5a5a
     CursorLineSign                         { SignColumn }, -- CursorLineSign xxx links to SignColumn
     Conceal                                { bg="darkgrey", fg="lightgrey", }, -- Conceal        xxx ctermfg=7 ctermbg=242 guifg=LightGrey guibg=DarkGrey
-    SpellBad                               { fg="#eeeeee", bg="#870000", gui="undercurl", sp="red", }, -- SpellBad       xxx cterm=undercurl ctermfg=255 ctermbg=88 gui=undercurl guifg=#eeeeee guibg=#870000 guisp=Red
-    SpellCap                               { bg="#af0000", fg="#eeeeee", sp="blue", }, -- SpellCap       xxx ctermfg=255 ctermbg=124 guifg=#eeeeee guibg=#af0000 guisp=Blue
-    SpellRare                              { bg="#000000", fg="#af0000", sp="magenta", }, -- SpellRare      xxx ctermfg=124 ctermbg=16 guifg=#af0000 guibg=#000000 guisp=Magenta
+    SpellBad                               { fg="#ffffff", bg="#870000", gui="undercurl", sp="red", }, -- SpellBad       xxx cterm=undercurl ctermfg=255 ctermbg=88 gui=undercurl guifg=#eeeeee guibg=#870000 guisp=Red
+    SpellCap                               { bg="#870000", fg="#eeeeee", sp="blue", }, -- SpellCap       xxx ctermfg=255 ctermbg=124 guifg=#eeeeee guibg=#870000 guisp=Blue
+    SpellRare                              { bg="#000000", fg="#870000", sp="magenta", }, -- SpellRare      xxx ctermfg=124 ctermbg=16 guifg=#870000 guibg=#000000 guisp=Magenta
     rstEmphasis                            { SpellRare }, -- rstEmphasis    xxx links to SpellRare
     SpellLocal                             { gui="undercurl", sp="cyan", }, -- SpellLocal     xxx ctermbg=14 gui=undercurl guisp=Cyan
-    Pmenu                                  { bg="#585858", fg="#eeeeee", }, -- Pmenu          xxx ctermfg=255 ctermbg=240 guifg=#eeeeee guibg=#585858
+    Pmenu                                  { bg="#5a5a5a", fg="#ffffff", }, -- Pmenu          xxx ctermfg=255 ctermbg=240 guifg=#eeeeee guibg=#5a5a5a
     PmenuKind                              { Pmenu }, -- PmenuKind      xxx links to Pmenu
     PmenuExtra                             { Pmenu }, -- PmenuExtra     xxx links to Pmenu
     NormalFloat                            { Pmenu }, -- NormalFloat    xxx links to Pmenu
@@ -70,13 +70,13 @@ local theme = lush(function(injected_functions)
     PmenuExtraSel                          { PmenuSel }, -- PmenuExtraSel  xxx links to PmenuSel
     PmenuSbar                              { bg="grey", }, -- PmenuSbar      xxx ctermbg=248 guibg=Grey
     UfoPreviewSbar                         { PmenuSbar }, -- UfoPreviewSbar xxx links to PmenuSbar
-    PmenuThumb                             { bg="#585858", fg="#080808", }, -- PmenuThumb     xxx ctermfg=232 ctermbg=240 guifg=#080808 guibg=#585858
+    PmenuThumb                             { bg="#5a5a5a", fg="#000000", }, -- PmenuThumb     xxx ctermfg=232 ctermbg=240 guifg=#080808 guibg=#5a5a5a
     UfoPreviewThumb                        { PmenuThumb }, -- UfoPreviewThumb xxx links to PmenuThumb
     TabLine                                { bg="darkgrey", gui="underline", }, -- TabLine        xxx cterm=underline ctermfg=15 ctermbg=242 gui=underline guibg=DarkGrey
     TabLineSel                             { gui="bold", }, -- TabLineSel     xxx cterm=bold gui=bold
     TabLineFill                            { gui="reverse", }, -- TabLineFill    xxx cterm=reverse gui=reverse
     CursorColumn                           { bg="grey40", }, -- CursorColumn   xxx ctermbg=242 guibg=Grey40
-    CursorLine                             { bg="#121212", }, -- CursorLine     xxx ctermbg=233 guibg=#121212
+    CursorLine                             { bg="#000000", }, -- CursorLine     xxx ctermbg=233 guibg=#121212
     ColorColumn                            { bg="darkred", }, -- ColorColumn    xxx ctermbg=1 guibg=DarkRed
     WinBar                                 { gui="bold", }, -- WinBar         xxx cterm=bold gui=bold
     WinBarNC                               { WinBar }, -- WinBarNC       xxx links to WinBar
@@ -98,32 +98,32 @@ local theme = lush(function(injected_functions)
     DapUIValue                             { Normal }, -- DapUIValue     xxx links to Normal
     DapUIVariable                          { Normal }, -- DapUIVariable  xxx links to Normal
     NotifyWARNBody                         { Normal }, -- NotifyWARNBody xxx links to Normal
-    FloatShadow                            { blend=80, bg="black", }, -- FloatShadow    xxx guibg=Black blend=80
-    FloatShadowThrough                     { blend=100, bg="black", }, -- FloatShadowThrough xxx guibg=Black blend=100
+    FloatShadow                            { blend=80, bg=hsl("#000000"), }, -- FloatShadow    xxx guibg=Black blend=80
+    FloatShadowThrough                     { blend=100, bg=hsl("#000000"), }, -- FloatShadowThrough xxx guibg=Black blend=100
     RedrawDebugNormal                      { gui="reverse", }, -- RedrawDebugNormal xxx cterm=reverse gui=reverse
     RedrawDebugClear                       { bg="yellow", }, -- RedrawDebugClear xxx ctermbg=11 guibg=Yellow
     RedrawDebugComposed                    { bg="green", }, -- RedrawDebugComposed xxx ctermbg=10 guibg=Green
     RedrawDebugRecompose                   { bg="red", }, -- RedrawDebugRecompose xxx ctermbg=9 guibg=Red
-    Error                                  { bg="#870000", fg="#eeeeee", }, -- Error          xxx ctermfg=255 ctermbg=88 guifg=#eeeeee guibg=#870000
+    Error                                  { bg=hsl("#870000"), fg=hsl("#eeeeee"), gui="italic" }, -- Error          xxx ctermfg=255 ctermbg=88 guifg=#eeeeee guibg=#870000
     NvimInvalid                            { Error }, -- NvimInvalid    xxx links to Error
     cError                                 { Error }, -- cError         xxx links to Error
     cBadContinuation                       { Error }, -- cBadContinuation xxx links to Error
     Todo                                   { bg="yellow", fg="blue", }, -- Todo           xxx ctermfg=0 ctermbg=11 guifg=Blue guibg=Yellow
     cTodo                                  { Todo }, -- cTodo          xxx links to Todo
-    String                                 { bg="#000000", fg="#8a8a8a", }, -- String         xxx ctermfg=245 ctermbg=16 guifg=#8a8a8a guibg=#000000
+    String                                 { bg=hsl("#000000"), fg=hsl("#808080"), }, -- String         xxx ctermfg=245 ctermbg=16 guifg=#8a8a8a guibg=#000000
     SpecialComment                         { String }, -- SpecialComment xxx links to String
     sym"@string"                           { String }, -- @string        xxx links to String
     NvimString                             { String }, -- NvimString     xxx links to String
     cString                                { String }, -- cString        xxx links to String
     cppRawString                           { String }, -- cppRawString   xxx links to String
     cppString                              { String }, -- cppString      xxx links to String
-    Constant                               { bg="#000000", fg="#d0d0d0", }, -- Constant       xxx ctermfg=252 ctermbg=16 guifg=#d0d0d0 guibg=#000000
+    Constant                               { bg=hsl("#000000"), fg=hsl("#808080"), }, -- Constant       xxx ctermfg=252 ctermbg=16 guifg=#d0d0d0 guibg=#000000
     sym"@constant"                         { Constant }, -- @constant      xxx links to Constant
     sym"@lsp.type.enumMember"              { Constant }, -- @lsp.type.enumMember xxx links to Constant
     cppConstant                            { Constant }, -- cppConstant    xxx links to Constant
     cConstant                              { Constant }, -- cConstant      xxx links to Constant
     AerialConstantIcon                     { Constant }, -- AerialConstantIcon xxx links to Constant
-    Number                                 { bg="#000000", fg="#ff0000", }, -- Number         xxx ctermfg=196 ctermbg=16 guifg=#ff0000 guibg=#000000
+    Number                                 { bg=hsl("#000000"), fg="red", }, -- Number         xxx ctermfg=196 ctermbg=16 guifg=#ff0000 guibg=#000000
     Character                              { Number }, -- Character      xxx links to Number
     Float                                  { Number }, -- Float          xxx links to Number
     Tag                                    { Number }, -- Tag            xxx links to Number
@@ -162,7 +162,7 @@ local theme = lush(function(injected_functions)
     Statement                              { gui="bold", fg="#ffff60", }, -- Statement      xxx ctermfg=11 gui=bold guifg=#ffff60
     cppStatement                           { Statement }, -- cppStatement   xxx links to Statement
     cStatement                             { Statement }, -- cStatement     xxx links to Statement
-    Keyword                                { bg="#000000", fg="#eeeeee", }, -- Keyword        xxx ctermfg=255 ctermbg=16 guifg=#eeeeee guibg=#000000
+    Keyword                                { bg=hsl("#000000"), fg=hsl("#ffffff"), }, -- Keyword        xxx ctermfg=255 ctermbg=16 guifg=#eeeeee guibg=#000000
     Function                               { Keyword }, -- Function       xxx links to Keyword
     Conditional                            { Keyword }, -- Conditional    xxx links to Keyword
     Repeat                                 { Keyword }, -- Repeat         xxx links to Keyword
@@ -179,11 +179,11 @@ local theme = lush(function(injected_functions)
     diffCommon                             { Keyword }, -- diffCommon     xxx links to Keyword
     diffAdded                              { Keyword }, -- diffAdded      xxx links to Keyword
     WhichKeyGroup                          { Keyword }, -- WhichKeyGroup  xxx links to Keyword
-    PreProc                                { fg="#ff80ff", }, -- PreProc        xxx ctermfg=81 guifg=#ff80ff
+    PreProc                                { fg="#870000", }, -- PreProc        xxx ctermfg=81 guifg=#ff80ff
     sym"@preproc"                          { PreProc }, -- @preproc       xxx links to PreProc
     cPreProc                               { PreProc }, -- cPreProc       xxx links to PreProc
     cOctalZero                             { PreProc }, -- cOctalZero     xxx links to PreProc
-    Type                                   { gui="bold", fg="#60ff60", }, -- Type           xxx ctermfg=121 gui=bold guifg=#60ff60
+    Type                                   { Identifier, gui="italic" }, -- Type           xxx ctermfg=121 gui=bold guifg=#60ff60
     sym"@type"                             { Type }, -- @type          xxx links to Type
     NvimNumberPrefix                       { Type }, -- NvimNumberPrefix xxx links to Type
     NvimOptionSigil                        { Type }, -- NvimOptionSigil xxx links to Type
@@ -199,7 +199,7 @@ local theme = lush(function(injected_functions)
     NotifyLogTitle                         { Special }, -- NotifyLogTitle xxx links to Special
     TelescopeMatching                      { Special }, -- TelescopeMatching xxx links to Special
     AerialConstructorIcon                  { Special }, -- AerialConstructorIcon xxx links to Special
-    DiagnosticError                        { fg="red", }, -- DiagnosticError xxx ctermfg=1 guifg=Red
+    DiagnosticError                        { Error }, -- DiagnosticError xxx ctermfg=1 guifg=Red
     DiagnosticVirtualTextError             { DiagnosticError }, -- DiagnosticVirtualTextError xxx links to DiagnosticError
     DiagnosticFloatingError                { DiagnosticError }, -- DiagnosticFloatingError xxx links to DiagnosticError
     DiagnosticSignError                    { DiagnosticError }, -- DiagnosticSignError xxx links to DiagnosticError
@@ -239,9 +239,9 @@ local theme = lush(function(injected_functions)
     WhichKeyValue                          { Comment }, -- WhichKeyValue  xxx links to Comment
     Underlined                             { gui="underline", fg="#80a0ff", }, -- Underlined     xxx cterm=underline ctermfg=81 gui=underline guifg=#80a0ff
     sym"@text.underline"                   { Underlined }, -- @text.underline xxx links to Underlined
-    MatchParen                             { bg="#585858", fg="#000000", }, -- MatchParen     xxx ctermfg=16 ctermbg=240 guifg=#000000 guibg=#585858
+    MatchParen                             { bg="#5a5a5a", fg="#000000", }, -- MatchParen     xxx ctermfg=16 ctermbg=240 guifg=#000000 guibg=#5a5a5a
     Ignore                                 { fg="bg", }, -- Ignore         xxx ctermfg=0 guifg=bg
-    NvimInternalError                      { bg="red", fg="red", }, -- NvimInternalError xxx ctermfg=9 ctermbg=9 guifg=Red guibg=Red
+    NvimInternalError                      { ErrorMsg }, -- NvimInternalError xxx ctermfg=9 ctermbg=9 guifg=Red guibg=Red
     NvimFigureBrace                        { NvimInternalError }, -- NvimFigureBrace xxx links to NvimInternalError
     NvimSingleQuotedUnknownEscape          { NvimInternalError }, -- NvimSingleQuotedUnknownEscape xxx links to NvimInternalError
     NvimInvalidSingleQuotedUnknownEscape   { NvimInternalError }, -- NvimInvalidSingleQuotedUnknownEscape xxx links to NvimInternalError
