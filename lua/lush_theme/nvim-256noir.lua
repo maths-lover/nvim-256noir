@@ -195,7 +195,7 @@ local theme = lush(function(injected_functions)
     AerialEnumIcon                         { Type }, -- AerialEnumIcon xxx links to Type
     AerialInterfaceIcon                    { Type }, -- AerialInterfaceIcon xxx links to Type
     AerialStructIcon                       { Type }, -- AerialStructIcon xxx links to Type
-    Special                                { fg="orange", }, -- Special        xxx ctermfg=224 guifg=Orange
+    Special                                { Keyword }, -- Special        xxx ctermfg=224 guifg=Orange
     sym"@constructor"                      { Special }, -- @constructor   xxx links to Special
     NotifyLogTitle                         { Special }, -- NotifyLogTitle xxx links to Special
     TelescopeMatching                      { Special }, -- TelescopeMatching xxx links to Special
