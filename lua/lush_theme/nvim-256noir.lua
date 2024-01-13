@@ -7,34 +7,36 @@ local hsluv = lush.hsluv
 local theme = lush(function(injected_functions)
   local sym = injected_functions.sym
   return {
-    SpecialKey                             { bg="#eeeeee", fg="#000000", }, -- SpecialKey     xxx ctermfg=16 ctermbg=255 guifg=#000000 guibg=#eeeeee
+    Normal                                 { bg=hsl("#000000"), fg=hsl("#bcbcbc"), }, -- Normal         xxx ctermfg=250 ctermbg=16 guifg=#bcbcbc guibg=#000000
+    Visual                                 { bg=hsl("#000000"), gui="reverse", fg=hsl("#bcbcbc"), }, -- Visual         xxx cterm=reverse ctermfg=250 ctermbg=16 gui=reverse guifg=#bcbcbc guibg=#000000
+    SpecialKey                             { bg=hsl("#eeeeee"), fg=hsl("#000000"), }, -- SpecialKey     xxx ctermfg=16 ctermbg=255 guifg=#000000 guibg=#eeeeee
     iCursor                                { SpecialKey }, -- iCursor        xxx links to SpecialKey
     TermCursor                             { gui="reverse", }, -- TermCursor     xxx cterm=reverse gui=reverse
-    NonText                                { gui="bold", fg="blue", }, -- NonText        xxx ctermfg=12 gui=bold guifg=Blue
+    Comment                                { bg=hsl("#000000"), fg=hsl("#585858") }, -- Comment        xxx ctermfg=240 ctermbg=16 guifg=#585858 guibg=#000000
+    NonText                                { Comment, gui="bold", fg=Comment.fg.darken(10) }, -- NonText        xxx ctermfg=12 gui=bold guifg=Blue
     EndOfBuffer                            { NonText }, -- EndOfBuffer    xxx links to NonText
     Whitespace                             { NonText }, -- Whitespace     xxx links to NonText
     GitSignsCurrentLineBlame               { NonText }, -- GitSignsCurrentLineBlame xxx links to NonText
     Directory                              { fg="cyan", }, -- Directory      xxx ctermfg=159 guifg=Cyan
     ErrorMsg                               { bg="#af0000", fg="#eeeeee", }, -- ErrorMsg       xxx ctermfg=255 ctermbg=124 guifg=#eeeeee guibg=#af0000
     NvimInvalidSpacing                     { ErrorMsg }, -- NvimInvalidSpacing xxx links to ErrorMsg
-    IncSearch                              { bg="#8a8a8a", gui="reverse", fg="#eeeeee", }, -- IncSearch      xxx cterm=reverse ctermfg=255 ctermbg=245 gui=reverse guifg=#eeeeee guibg=#8a8a8a
-    Search                                 { bg="#303030", fg="#8a8a8a", }, -- Search         xxx ctermfg=245 ctermbg=236 guifg=#8a8a8a guibg=#303030
-    CurSearch                              { Search }, -- CurSearch      xxx links to Search
+    Search                                 { bg = hsl(52, 52, 52), fg = hsl(52, 10, 10) }, -- Search         xxx ctermfg=245 ctermbg=236 guifg=#8a8a8a guibg=#303030
+    IncSearch                              { bg=Search.bg.ro(-20), fg=Search.fg.da(90) }, -- IncSearch      xxx cterm=reverse ctermfg=255 ctermbg=245 gui=reverse guifg=#eeeeee guibg=#8a8a8a
+    CurSearch                              { bg=Search.bg.ro(-40), fg=Search.fg.da(90) }, -- CurSearch      xxx links to Search
     QuickFixLine                           { Search }, -- QuickFixLine   xxx links to Search
     Substitute                             { Search }, -- Substitute     xxx links to Search
     MoreMsg                                { gui="bold", fg="seagreen", }, -- MoreMsg        xxx ctermfg=121 gui=bold guifg=SeaGreen
     ModeMsg                                { gui="bold", }, -- ModeMsg        xxx cterm=bold gui=bold
-    LineNr                                 { fg="yellow", }, -- LineNr         xxx ctermfg=11 guifg=Yellow
+    LineNr                                 { Comment, fg=Comment.fg.lighten(20) }, -- LineNr         xxx ctermfg=11 guifg=Yellow
     LineNrAbove                            { LineNr }, -- LineNrAbove    xxx links to LineNr
     LineNrBelow                            { LineNr }, -- LineNrBelow    xxx links to LineNr
-    CursorLineNr                           { gui="bold", fg="yellow", }, -- CursorLineNr   xxx cterm=underline ctermfg=11 gui=bold guifg=Yellow
+    CursorLineNr                           { LineNr, gui="bold" }, -- CursorLineNr   xxx cterm=underline ctermfg=11 gui=bold guifg=Yellow
     Question                               { gui="bold", fg="green", }, -- Question       xxx ctermfg=121 gui=bold guifg=Green
     StatusLine                             { bg="#000000", gui="bold,reverse", fg="#8a8a8a", }, -- StatusLine     xxx cterm=bold,reverse ctermfg=245 ctermbg=16 gui=bold,reverse guifg=#8a8a8a guibg=#000000
     MsgSeparator                           { StatusLine }, -- MsgSeparator   xxx links to StatusLine
     StatusLineNC                           { bg="#000000", gui="reverse", fg="#303030", }, -- StatusLineNC   xxx cterm=reverse ctermfg=236 ctermbg=16 gui=reverse guifg=#303030 guibg=#000000
     Title                                  { gui="bold", fg="magenta", }, -- Title          xxx ctermfg=225 gui=bold guifg=Magenta
     FloatTitle                             { Title }, -- FloatTitle     xxx links to Title
-    Visual                                 { bg="#000000", gui="reverse", fg="#bcbcbc", }, -- Visual         xxx cterm=reverse ctermfg=250 ctermbg=16 gui=reverse guifg=#bcbcbc guibg=#000000
     VertSplit                              { Visual }, -- VertSplit      xxx links to Visual
     UfoPreviewCursorLine                   { Visual }, -- UfoPreviewCursorLine xxx links to Visual
     VisualNOS                              { Visual }, -- VisualNOS      xxx links to Visual
@@ -80,7 +82,6 @@ local theme = lush(function(injected_functions)
     WinBarNC                               { WinBar }, -- WinBarNC       xxx links to WinBar
     Cursor                                 { bg="fg", fg="bg", }, -- Cursor         xxx guifg=bg guibg=fg
     lCursor                                { bg="fg", fg="bg", }, -- lCursor        xxx guifg=bg guibg=fg
-    Normal                                 { bg="#000000", fg="#bcbcbc", }, -- Normal         xxx ctermfg=250 ctermbg=16 guifg=#bcbcbc guibg=#000000
     Boolean                                { Normal }, -- Boolean        xxx links to Normal
     Exception                              { Normal }, -- Exception      xxx links to Normal
     Macro                                  { Normal }, -- Macro          xxx links to Normal
@@ -224,7 +225,6 @@ local theme = lush(function(injected_functions)
     DiagnosticUnderlineHint                { gui="underline", sp="lightgrey", }, -- DiagnosticUnderlineHint xxx cterm=underline gui=underline guisp=LightGrey
     DiagnosticUnderlineOk                  { gui="underline", sp="lightgreen", }, -- DiagnosticUnderlineOk xxx cterm=underline gui=underline guisp=LightGreen
     DiagnosticDeprecated                   { gui="strikethrough", sp="red", }, -- DiagnosticDeprecated xxx cterm=strikethrough gui=strikethrough guisp=Red
-    Comment                                { bg="#000000", fg="#585858", }, -- Comment        xxx ctermfg=240 ctermbg=16 guifg=#585858 guibg=#000000
     DiagnosticUnnecessary                  { Comment }, -- DiagnosticUnnecessary xxx links to Comment
     sym"@comment"                          { Comment }, -- @comment       xxx links to Comment
     sym"@lsp.type.comment"                 { Comment }, -- @lsp.type.comment xxx links to Comment
