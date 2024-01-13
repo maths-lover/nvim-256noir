@@ -133,7 +133,7 @@ local theme = lush(function(injected_functions)
     cppNumber                              { Number }, -- cppNumber      xxx links to Number
     cOctal                                 { Number }, -- cOctal         xxx links to Number
     cNumber                                { Number }, -- cNumber        xxx links to Number
-    Identifier                             { fg="#40ffff", }, -- Identifier     xxx cterm=bold ctermfg=14 guifg=#40ffff
+    Identifier                             { fg="#ffffff", }, -- Identifier     xxx cterm=bold ctermfg=14 guifg=#40ffff
     sym"@text.reference"                   { Identifier }, -- @text.reference xxx links to Identifier
     sym"@parameter"                        { Identifier }, -- @parameter     xxx links to Identifier
     sym"@field"                            { Identifier }, -- @field         xxx links to Identifier
