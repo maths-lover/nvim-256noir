@@ -75,8 +75,8 @@ local theme = lush(function(injected_functions)
     TabLine                                { bg="darkgrey", gui="underline", }, -- TabLine        xxx cterm=underline ctermfg=15 ctermbg=242 gui=underline guibg=DarkGrey
     TabLineSel                             { gui="bold", }, -- TabLineSel     xxx cterm=bold gui=bold
     TabLineFill                            { gui="reverse", }, -- TabLineFill    xxx cterm=reverse gui=reverse
-    CursorColumn                           { bg="grey40", }, -- CursorColumn   xxx ctermbg=242 guibg=Grey40
-    CursorLine                             { bg="#000000", }, -- CursorLine     xxx ctermbg=233 guibg=#121212
+    CursorLine                             { bg=hsl("#5a5a5a"), }, -- CursorLine     xxx ctermbg=233 guibg=#121212
+    CursorColumn                           { bg=CursorLine.bg.darken(30) }, -- CursorColumn   xxx ctermbg=242 guibg=Grey40
     ColorColumn                            { bg="darkred", }, -- ColorColumn    xxx ctermbg=1 guibg=DarkRed
     WinBar                                 { gui="bold", }, -- WinBar         xxx cterm=bold gui=bold
     WinBarNC                               { WinBar }, -- WinBarNC       xxx links to WinBar
