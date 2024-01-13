@@ -12,7 +12,7 @@ local theme = lush(function(injected_functions)
     SpecialKey                             { bg=hsl("#ffffff"), fg=hsl("#000000"), }, -- SpecialKey     xxx ctermfg=16 ctermbg=255 guifg=#000000 guibg=#eeeeee
     iCursor                                { SpecialKey }, -- iCursor        xxx links to SpecialKey
     TermCursor                             { gui="reverse", }, -- TermCursor     xxx cterm=reverse gui=reverse
-    Comment                                { bg=hsl("#000000"), fg=hsl("#5a5a5a"), gui="italic" }, -- Comment        xxx ctermfg=240 ctermbg=16 guifg=#5a5a5a guibg=#000000
+    Comment                                { fg=hsl("#5a5a5a"), gui="italic" }, -- Comment        xxx ctermfg=240 ctermbg=16 guifg=#5a5a5a guibg=#000000
     NonText                                { Comment, gui="bold", fg=Comment.fg.darken(10) }, -- NonText        xxx ctermfg=12 gui=bold guifg=Blue
     EndOfBuffer                            { NonText }, -- EndOfBuffer    xxx links to NonText
     Whitespace                             { NonText }, -- Whitespace     xxx links to NonText
@@ -75,17 +75,18 @@ local theme = lush(function(injected_functions)
     TabLine                                { bg="darkgrey", gui="underline", }, -- TabLine        xxx cterm=underline ctermfg=15 ctermbg=242 gui=underline guibg=DarkGrey
     TabLineSel                             { gui="bold", }, -- TabLineSel     xxx cterm=bold gui=bold
     TabLineFill                            { gui="reverse", }, -- TabLineFill    xxx cterm=reverse gui=reverse
-    CursorLine                             { bg=hsl("#5a5a5a"), }, -- CursorLine     xxx ctermbg=233 guibg=#121212
-    CursorColumn                           { bg=CursorLine.bg.darken(30) }, -- CursorColumn   xxx ctermbg=242 guibg=Grey40
+    CursorLine                             { bg=hsl("#5a5a5a").darken(40) }, -- CursorLine     xxx ctermbg=233 guibg=#121212
+    CursorColumn                           { CursorLine }, -- CursorColumn   xxx ctermbg=242 guibg=Grey40
     ColorColumn                            { bg="darkred", }, -- ColorColumn    xxx ctermbg=1 guibg=DarkRed
     WinBar                                 { gui="bold", }, -- WinBar         xxx cterm=bold gui=bold
     WinBarNC                               { WinBar }, -- WinBarNC       xxx links to WinBar
     Cursor                                 { bg="fg", fg="bg", }, -- Cursor         xxx guifg=bg guibg=fg
     lCursor                                { bg="fg", fg="bg", }, -- lCursor        xxx guifg=bg guibg=fg
+    NormalNC                               { Normal }, -- NormalNC
     Boolean                                { Normal }, -- Boolean        xxx links to Normal
     Exception                              { Normal }, -- Exception      xxx links to Normal
     Macro                                  { Normal }, -- Macro          xxx links to Normal
-    Delimiter                              { Normal }, -- Delimiter      xxx links to Normal
+    Delimiter                              { Normal, bg="" }, -- Delimiter      xxx links to Normal
     Debug                                  { Normal }, -- Debug          xxx links to Normal
     NvimSpacing                            { Normal }, -- NvimSpacing    xxx links to Normal
     NotifyTRACEBody                        { Normal }, -- NotifyTRACEBody xxx links to Normal
@@ -110,7 +111,7 @@ local theme = lush(function(injected_functions)
     cBadContinuation                       { Error }, -- cBadContinuation xxx links to Error
     Todo                                   { bg="yellow", fg="blue", }, -- Todo           xxx ctermfg=0 ctermbg=11 guifg=Blue guibg=Yellow
     cTodo                                  { Todo }, -- cTodo          xxx links to Todo
-    String                                 { bg=hsl("#000000"), fg=hsl("#808080"), }, -- String         xxx ctermfg=245 ctermbg=16 guifg=#8a8a8a guibg=#000000
+    String                                 { fg=hsl("#808080") }, -- String         xxx ctermfg=245 ctermbg=16 guifg=#8a8a8a guibg=#000000
     SpecialComment                         { String }, -- SpecialComment xxx links to String
     sym"@string"                           { String }, -- @string        xxx links to String
     NvimString                             { String }, -- NvimString     xxx links to String
@@ -162,7 +163,7 @@ local theme = lush(function(injected_functions)
     Statement                              { gui="bold", fg="#ffff60", }, -- Statement      xxx ctermfg=11 gui=bold guifg=#ffff60
     cppStatement                           { Statement }, -- cppStatement   xxx links to Statement
     cStatement                             { Statement }, -- cStatement     xxx links to Statement
-    Keyword                                { bg=hsl("#000000"), fg=hsl("#ffffff"), }, -- Keyword        xxx ctermfg=255 ctermbg=16 guifg=#eeeeee guibg=#000000
+    Keyword                                { fg=hsl("#ffffff"), }, -- Keyword        xxx ctermfg=255 ctermbg=16 guifg=#eeeeee guibg=#000000
     Function                               { Keyword }, -- Function       xxx links to Keyword
     Conditional                            { Keyword }, -- Conditional    xxx links to Keyword
     Repeat                                 { Keyword }, -- Repeat         xxx links to Keyword
